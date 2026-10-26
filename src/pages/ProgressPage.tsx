@@ -30,27 +30,27 @@ export const ProgressPage: React.FC<ProgressPageProps> = ({ progress }) => {
       : 0;
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-6 md:py-8 space-y-8">
+    <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 py-6 md:py-8 space-y-6 sm:space-y-8 min-w-0">
       {/* Top Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <button
           onClick={() => {
             sound.playClick();
             navigate('/');
           }}
-          className="flex items-center gap-1.5 text-xs font-medium text-[#91A7BF] hover:text-[#56E6D0] transition-colors p-1"
+          className="flex items-center gap-1.5 text-xs font-medium text-[#91A7BF] hover:text-[#56E6D0] transition-colors p-1 self-start"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Hub</span>
         </button>
 
-        <span className="text-xs font-mono text-[#91A7BF]">
+        <span className="text-[10px] sm:text-xs font-mono text-[#91A7BF] text-left sm:text-right leading-snug">
           PLAYER TELEMETRY · LOCAL BROWSER STORAGE
         </span>
       </div>
 
       <div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-[#F1F7FF] mb-2">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#F1F7FF] mb-2 text-balance">
           Focus & Performance Metrics
         </h1>
         <p className="text-sm text-[#91A7BF] leading-relaxed">
@@ -189,7 +189,7 @@ export const ProgressPage: React.FC<ProgressPageProps> = ({ progress }) => {
             </div>
             <p className="text-sm font-semibold text-[#F1F7FF]">No session records yet</p>
             <p className="text-xs text-[#91A7BF] max-w-sm mx-auto">
-              Play your first session across any of MINDPLAY's 10 mini-games to start logging your scores and records.
+              Play your first session across any of RELAXPLAY's 10 mini-games to start logging your scores and records.
             </p>
           </div>
         ) : (

@@ -5,10 +5,12 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
 import { GameInfo, AppSettings } from './types';
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
 import { SettingsModal } from './components/SettingsModal';
+import { SplashScreen } from './components/SplashScreen';
 import { Home } from './pages/Home';
 import { DailyChallengePage } from './pages/DailyChallengePage';
 import { ProgressPage } from './pages/ProgressPage';
@@ -186,7 +188,7 @@ function AppContent() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full pb-20 md:pb-12">
+      <main className="flex-1 w-full min-w-0 pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-12">
         <Routes>
           <Route
             path="/"
@@ -402,8 +404,24 @@ function AppContent() {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  const dismissSplash = useCallback(() => {
+    setShowSplash(false);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = showSplash ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showSplash]);
+
   return (
     <BrowserRouter>
+      <AnimatePresence>
+        {showSplash && <SplashScreen onComplete={dismissSplash} />}
+      </AnimatePresence>
       <AppContent />
     </BrowserRouter>
   );

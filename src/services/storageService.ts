@@ -2,8 +2,8 @@ import { UserProgress, AppSettings, GameId, Difficulty, GameResult } from '../ty
 import { getLocalDateString, isConsecutiveDay } from '../utils/dates';
 import { getDailyChallenge, checkChallengeMet } from './dailyChallengeService';
 
-const PROGRESS_KEY = 'mindplay_user_progress_v3';
-const SETTINGS_KEY = 'mindplay_user_settings_v3';
+const PROGRESS_KEY = 'RELAXPLAY_user_progress_v3';
+const SETTINGS_KEY = 'RELAXPLAY_user_settings_v3';
 
 const defaultStats = () => ({
   played: 0,
@@ -55,7 +55,7 @@ class StorageService {
     try {
       let data = localStorage.getItem(PROGRESS_KEY);
       if (!data) {
-        data = localStorage.getItem('mindplay_user_progress_v2');
+        data = localStorage.getItem('RELAXPLAY_user_progress_v2');
       }
       if (!data) return { ...defaultProgress };
       const parsed = JSON.parse(data);
@@ -91,7 +91,7 @@ class StorageService {
     try {
       let data = localStorage.getItem(SETTINGS_KEY);
       if (!data) {
-        data = localStorage.getItem('mindplay_user_settings_v2');
+        data = localStorage.getItem('RELAXPLAY_user_settings_v2');
       }
       if (!data) return { ...defaultSettings };
       return { ...defaultSettings, ...JSON.parse(data) };
@@ -218,8 +218,8 @@ class StorageService {
     try {
       localStorage.removeItem(PROGRESS_KEY);
       localStorage.removeItem(SETTINGS_KEY);
-      localStorage.removeItem('mindplay_user_progress_v2');
-      localStorage.removeItem('mindplay_user_settings_v2');
+      localStorage.removeItem('RELAXPLAY_user_progress_v2');
+      localStorage.removeItem('RELAXPLAY_user_settings_v2');
     } catch {}
   }
 }

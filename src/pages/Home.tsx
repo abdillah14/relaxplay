@@ -17,6 +17,7 @@ import { GameCard } from '../components/GameCard';
 import { DailyChallengeBanner } from '../components/DailyChallengeBanner';
 import { NeonButton } from '../components/NeonButton';
 
+
 interface HomeProps {
   games: GameInfo[];
   progress: UserProgress;
@@ -43,31 +44,30 @@ export const Home: React.FC<HomeProps> = ({
   );
 
   return (
-    <div className="space-y-12 pb-16">
+    <div className="space-y-8 sm:space-y-12 pb-12 sm:pb-16">
       {/* Hero Section */}
-      <section className="relative pt-6 sm:pt-10 overflow-hidden">
+      <section className="relative pt-4 sm:pt-10 overflow-hidden">
         {/* Ambient neon radial glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-tr from-[#56E6D0]/10 via-[#62B7FF]/10 to-[#A78BFA]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(24rem,90vw)] h-[min(24rem,90vw)] sm:w-96 sm:h-96 bg-gradient-to-tr from-[#56E6D0]/10 via-[#62B7FF]/10 to-[#A78BFA]/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-5 px-4">
-         
-
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-[#F1F7FF] text-balance">
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4 sm:space-y-5 px-3 sm:px-4">
+          <h1 className="text-[clamp(1.75rem,6vw,3.75rem)] font-extrabold tracking-tight text-[#F1F7FF] text-balance leading-tight">
             Challenge your mind.{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#56E6D0] via-[#62B7FF] to-[#A78BFA]">
               Find your calm.
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-[#91A7BF] max-w-2xl mx-auto text-balance leading-relaxed">
+          <p className="text-sm sm:text-lg text-[#91A7BF] max-w-2xl mx-auto text-balance leading-relaxed px-1">
             Nine timeless worlds. Endless ways to reset. Discover Mahjong Solitaire, Classic Klondike, 10×10 Block Puzzle, Chess Tactics, Fluid Conduits, and neural memory puzzles.
           </p>
 
           {/* Action CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 pt-2 w-full max-w-md sm:max-w-none mx-auto">
             <NeonButton
               variant="cyan"
               size="lg"
+              className="w-full sm:w-auto min-h-11"
               icon={<Play className="w-5 h-5 fill-current" />}
               onClick={() => {
                 const el = document.getElementById('games-grid');
@@ -80,6 +80,7 @@ export const Home: React.FC<HomeProps> = ({
             <NeonButton
               variant="ghost"
               size="lg"
+              className="w-full sm:w-auto min-h-11"
               icon={<Sparkles className="w-4 h-4 text-[#FFB454]" />}
               onClick={() => navigate('/daily')}
             >
@@ -138,18 +139,18 @@ export const Home: React.FC<HomeProps> = ({
       </section>
 
       {/* Actual Saved Statistics Grid */}
-      <section className="max-w-5xl mx-auto px-4">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          <div className="p-4 rounded-xl bg-[#102238] border border-[rgba(130,180,220,0.15)]">
-            <span className="text-xs text-[#91A7BF] block mb-1">Total Games Played</span>
-            <span className="text-2xl font-extrabold font-mono text-[#F1F7FF] tabular-nums">
+      <section className="max-w-5xl mx-auto px-3 sm:px-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
+          <div className="p-3 sm:p-4 rounded-xl bg-[#102238] border border-[rgba(130,180,220,0.15)] min-w-0">
+            <span className="text-[10px] sm:text-xs text-[#91A7BF] block mb-1 leading-snug">Total Games Played</span>
+            <span className="text-xl sm:text-2xl font-extrabold font-mono text-[#F1F7FF] tabular-nums">
               {progress.totalGamesPlayed}
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#102238] border border-[rgba(130,180,220,0.15)]">
-            <span className="text-xs text-[#91A7BF] block mb-1">Best Score Recorded</span>
-            <span className="text-2xl font-extrabold font-mono text-[#56E6D0] tabular-nums">
+          <div className="p-3 sm:p-4 rounded-xl bg-[#102238] border border-[rgba(130,180,220,0.15)] min-w-0">
+            <span className="text-[10px] sm:text-xs text-[#91A7BF] block mb-1 leading-snug">Best Score Recorded</span>
+            <span className="text-xl sm:text-2xl font-extrabold font-mono text-[#56E6D0] tabular-nums truncate">
               {overallBestScore > 0 ? overallBestScore.toLocaleString() : '—'}
             </span>
           </div>
@@ -327,7 +328,7 @@ export const Home: React.FC<HomeProps> = ({
         </div>
       </section>
 
-      {/* Why MINDPLAY Design Values */}
+      {/* Why RELAXPLAY Design Values */}
       <section className="max-w-5xl mx-auto px-4 pt-6">
         <div className="rounded-2xl bg-[#0B192B] border border-[rgba(130,180,220,0.14)] p-6 sm:p-8">
           <h3 className="text-lg font-bold text-[#F1F7FF] mb-4">Nine Timeless Worlds. Endless Ways to Reset.</h3>

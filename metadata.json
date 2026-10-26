@@ -1,5 +1,5 @@
 {
-  "name": "MINDPLAY - Futuristic Brain-Training & Classic Games",
+  "name": "RELAXPLAY - Futuristic Brain-Training & Classic Games",
   "description": "Nine timeless worlds. Endless ways to reset. Challenge your mind and find your calm with Mahjong Solitaire, Classic Solitaire, Block Puzzle, Chess Puzzles, Pipe Connect, Echo Path, One Line, Tiny Anomaly, and Hexa Flow.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
