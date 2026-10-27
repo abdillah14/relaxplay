@@ -110,7 +110,7 @@ export const Home: React.FC<HomeProps> = ({
               }`}
             >
               <Zap className="w-3.5 h-3.5 text-[#FFB454]" />
-              <span>Challenge Me</span>
+              <span>Challenge Me..</span>
             </button>
             <button
               onClick={() => setSelectedMood('break')}
